@@ -1,5 +1,24 @@
-Django Form Renderer
+Django Example
 ====
+
+An example [Django](https://www.djangoproject.com) website.
+
+[ ] Custom User model
+[ ] Extensible local settings
+[ ] Form-rendering with [Crispy Forms](https://django-crispy-forms.readthedocs.io/en/latest/)
+[ ] [ManifestStaticFilesStorage](https://docs.djangoproject.com/en/3.2/ref/contrib/staticfiles/#manifeststaticfilesstorage)
+[ ] Dependency management with [Poetry](https://python-poetry.org/docs/master/)
+
+
+How to:
+
+* Create a model
+* Write tests
+* Use built-in permissions
+* Extend default admin
+* Run a benchmark
+
+
 
 Testing the `FORM_RENDERER` setting of a Django project, especially in regards to the use of custom widget templates.
 
