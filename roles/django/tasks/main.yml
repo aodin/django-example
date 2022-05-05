@@ -1,0 +1,122 @@
+---
+- name: copy the deploy private key
+  become: no
+  copy:
+    src: "~/.ssh/equity_rsa"
+    dest: "{{ home_dir }}/.ssh/example_rsa"
+    mode: 0600
+
+- name: copy the deploy public key
+  become: no
+  copy:
+    src: "~/.ssh/equity_rsa.pub"
+    dest: "{{ home_dir }}/.ssh/example_rsa.pub"
+    mode: 0600
+
+- name: install latest packages
+  become: yes
+  apt:
+    update_cache: yes
+    state: latest
+    pkg:
+      - git
+      - nginx
+      - curl
+      - build-essential
+      - python3-dev
+      - virtualenv
+      - pipenv
+      - python3-pip
+      - python3-psycopg2
+      - python3-gunicorn
+
+- name: get the up to date Git repository
+  become: no
+  git:
+    repo: "{{ project_repo }}"
+    accept_hostkey: yes
+    dest: "{{ install_path }}"
+  notify:
+    - restart service
+  tags:
+    - update_only
+
+- name: install python requirements in a python3 virtual environment
+  become: no
+  pip:
+    requirements: "{{ requirements_file }}"
+    virtualenv: "{{ virtualenv_path }}"
+    virtualenv_python: python3
+  notify:
+    - restart service
+  tags:
+    - update_only
+
+- name: create local settings for Django
+  become: no
+  template:
+    src: "local_settings.py.j2"
+    dest: "{{ django_path }}/{{ project_name }}/local_settings.py"
+  notify:
+    - restart service
+  tags:
+    - update_only
+
+- name: perform django collectstatic
+  become: no
+  django_manage:
+    command: collectstatic
+    virtualenv: "{{ virtualenv_path }}"
+    app_path: "{{ django_path }}"
+  tags:
+    - update_only
+
+- name: perform django migrate
+  become: no
+  django_manage:
+    command: migrate
+    virtualenv: "{{ virtualenv_path }}"
+    app_path: "{{ django_path }}"
+  notify: restart service
+  tags:
+    - update_only
+
+- name: create a nginx site available
+  become: yes
+  template:
+    src: "example.nginx.j2"
+    dest: "/etc/nginx/sites-available/{{ domain }}"
+  notify: restart nginx
+  tags:
+    - update_only
+
+- name: remove the default nginx site
+  become: yes
+  file:
+    dest: "/etc/nginx/sites-enabled/default"
+    state: absent
+  notify: restart nginx
+
+- name: symlink the nginx site available to enabled
+  become: yes
+  file:
+    src: "/etc/nginx/sites-available/{{ domain }}"
+    dest: "/etc/nginx/sites-enabled/{{ domain }}"
+    state: link
+  notify: restart nginx
+
+- name: create a systemd script
+  become: yes
+  template:
+    src: "gunicorn.j2"
+    dest: "/etc/systemd/system/{{ project_name }}.service"
+    mode: 0755
+  notify: restart service
+
+- name: ensure the systemd service is enabled and not masked
+  become: yes
+  systemd:
+    name: "{{ project_name }}"
+    enabled: yes
+    masked: no
+  notify: restart service

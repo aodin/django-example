@@ -1,0 +1,40 @@
+---
+- name: postgres is installed
+  become: yes
+  apt:
+    update_cache: yes
+    state: latest
+    pkg:
+      - acl # Instead of allow_world_readable_tmpfiles = True in .cfg
+      - postgresql
+      - postgresql-contrib
+      - libpq-dev
+      - python3-psycopg2
+
+- name: database is created
+  become: yes
+  become_user: postgres
+  postgresql_db:
+    name: "{{ db_name }}"
+    encoding: 'UTF-8'
+    lc_collate: 'C.UTF-8'
+    lc_ctype: 'C.UTF-8'
+    template: 'template0'
+    state: present
+
+- name: user has access to the database
+  become: yes
+  become_user: postgres
+  postgresql_user:
+    db: "{{ db_name }}"
+    name: "{{ db_user }}"
+    password: "{{ db_password }}"
+    priv: ALL
+    state: present
+
+- name: postgres is started
+  become: yes
+  service:
+    name: postgresql
+    state: started
+    enabled: yes

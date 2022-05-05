@@ -1,0 +1,13 @@
+---
+- name: restart nginx
+  become: yes
+  service:
+    name: nginx
+    state: restarted
+
+- name: restart service
+  become: yes
+  systemd:
+    state: restarted
+    daemon_reload: yes
+    name: "{{ project_name }}"

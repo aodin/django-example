@@ -1,0 +1,19 @@
+import os
+import sys
+
+DEBUG = False
+
+ALLOWED_HOSTS = ['localhost', '{{ domain }}']
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': '{{ db_name }}',
+        'USER': '{{ db_user }}',
+        'PASSWORD': '{{ db_password }}',
+        'HOST': 'localhost',
+        'PORT': '5432',
+    },
+}
+
+SITE_URL = 'https://{{ domain }}'

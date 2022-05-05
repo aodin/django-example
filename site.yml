@@ -1,0 +1,21 @@
+---
+- hosts: tag_Name_django_example
+  remote_user: ubuntu
+  gather_facts: no
+  vars:
+    domain: ""
+    project_name: "django_example"
+    home_dir: "/home/ubuntu"
+    project_repo: "git@github.com:aodin/django-example.git"
+    install_path: "{{ home_dir }}/src/{{ project_name }}"
+    virtualenv_path: "{{ install_path }}/.venv"
+    requirements_file: "{{ install_path }}/requirements.txt"
+    django_path: "{{ install_path }}/{{ project_name }}"
+    static_root: "{{ django_path }}/static"
+    domain: ""
+    db_user: postgres
+    db_name: django_example
+    db_password: postgres
+  roles:
+    - { role: postgres }
+    - { role: django }

@@ -3,12 +3,13 @@ Django Example
 
 An example [Django](https://www.djangoproject.com) website.
 
-[ ] Custom User model
-[ ] Extensible local settings
-[ ] Form-rendering with [Crispy Forms](https://django-crispy-forms.readthedocs.io/en/latest/)
-[ ] [ManifestStaticFilesStorage](https://docs.djangoproject.com/en/3.2/ref/contrib/staticfiles/#manifeststaticfilesstorage)
-[ ] Dependency management with [Poetry](https://python-poetry.org/docs/master/)
-
+- [ ] Custom User model
+- [ ] Extensible local settings
+- [ ] Form-rendering with [Crispy Forms](https://django-crispy-forms.readthedocs.io/en/latest/)
+- [ ] [ManifestStaticFilesStorage](https://docs.djangoproject.com/en/3.2/ref/contrib/staticfiles/#manifeststaticfilesstorage)
+- [ ] Dependency management with [Poetry](https://python-poetry.org/docs/master/)
+- [ ] API endpoints with REST framework
+- [ ] deployment via Ansible
 
 How to:
 
@@ -78,3 +79,13 @@ Order of `INSTALLED_APPS` matters. For example, during DEBUG mode with `app.apps
     django.template.loaders.app_directories.Loader: .venv/lib/python3.9/site-packages/django/forms/templates/widgets/DNE.html (Source does not exist)
 
 Default Django templates can be overridden without specifying a widget subclass with a custom `template_name`, just add the new template under any of the `TEMPLATES` `DIRS` or app templates with a path of `django/forms/widgets`.
+
+### Deployment
+
+Ansible deployment is performed with:
+
+    ansible-playbook -e 'ansible_python_interpreter=python3' -i aws_ec2.yml -u ubuntu site.yml
+
+Ansible inventory can be debugged with:
+
+    ansible-inventory -i aws_ec2.yml --list

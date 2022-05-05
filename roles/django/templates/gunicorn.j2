@@ -1,0 +1,12 @@
+[Unit]
+Description=gunicorn daemon for {{ project_name }}
+After=network.target
+
+[Service]
+User=ubuntu
+Group=www-data
+WorkingDirectory={{ django_path }}
+ExecStart={{ virtualenv_path }}/bin/gunicorn --workers 2 --max-requests 250 --max-requests-jitter 50 --timeout 60 --bind 127.0.0.1:8000 {{ project_name }}.wsgi:application
+
+[Install]
+WantedBy=multi-user.target
