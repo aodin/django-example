@@ -4,8 +4,10 @@ asgiref==3.5.1
 boto3==1.22.8
 botocore==1.25.8
 cffi==1.15.0
+crispy-bootstrap5==0.6
 cryptography==37.0.2
 Django==4.0.4
+django-crispy-forms==1.14.0
 gunicorn==20.1.0
 Jinja2==3.1.2
 jmespath==1.0.0

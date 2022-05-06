@@ -30,9 +30,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'custom_user.apps.CustomUserConfig',
     'app.apps.AppConfig',
     'django.forms',
 ]
+
+AUTH_USER_MODEL = 'custom_user.CustomUser'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -118,9 +121,33 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    BASE_DIR / "static-dev",
+]
+
+STATIC_URL = "/static/"
+
+# A static root is required for collectstatic
+STATIC_ROOT = BASE_DIR / "static"
+
+STATICFILES_STORAGE = "django.contrib.staticfiles.storage.ManifestStaticFilesStorage"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# Forms
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+
+CRISPY_TEMPLATE_PACK = "bootstrap5"
+
+FORM_RENDERER = "django.forms.renderers.TemplatesSetting"
+
+# Put local settings in 'local_settings.py'
+try:
+    from .local_settings import *
+except ImportError:
+    pass

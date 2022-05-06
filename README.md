@@ -3,13 +3,14 @@ Django Example
 
 An example [Django](https://www.djangoproject.com) website.
 
-- [ ] Custom User model
-- [ ] Extensible local settings
-- [ ] Form-rendering with [Crispy Forms](https://django-crispy-forms.readthedocs.io/en/latest/)
-- [ ] [ManifestStaticFilesStorage](https://docs.djangoproject.com/en/3.2/ref/contrib/staticfiles/#manifeststaticfilesstorage)
+- [x] Using a [custom User model](https://docs.djangoproject.com/en/4.0/topics/auth/customizing/#substituting-a-custom-user-model)
+- [x] Extensible local settings
+- [x] Form-rendering with [Crispy Forms](https://django-crispy-forms.readthedocs.io/en/latest/)
+- [x] [ManifestStaticFilesStorage](https://docs.djangoproject.com/en/3.2/ref/contrib/staticfiles/#manifeststaticfilesstorage)
 - [ ] Dependency management with [Poetry](https://python-poetry.org/docs/master/)
-- [ ] API endpoints with REST framework
-- [ ] deployment via Ansible
+- [ ] Emails with [AWS SES](https://aws.amazon.com/ses/)
+- [x] Deployment via Ansible
+
 
 How to:
 
@@ -18,7 +19,6 @@ How to:
 * Use built-in permissions
 * Extend default admin
 * Run a benchmark
-
 
 
 Testing the `FORM_RENDERER` setting of a Django project, especially in regards to the use of custom widget templates.
@@ -81,6 +81,13 @@ Order of `INSTALLED_APPS` matters. For example, during DEBUG mode with `app.apps
 Default Django templates can be overridden without specifying a widget subclass with a custom `template_name`, just add the new template under any of the `TEMPLATES` `DIRS` or app templates with a path of `django/forms/widgets`.
 
 ### Deployment
+
+Add a [deploy key to your Github repository](https://docs.github.com/en/developers/overview/managing-deploy-keys).
+
+Ansible variables that may need to be updated in `site.yml`:
+
+- domain
+- deploy_key
 
 Ansible deployment is performed with:
 

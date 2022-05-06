@@ -4,6 +4,7 @@
   gather_facts: no
   vars:
     domain: ""
+    deploy_key: "example_rsa"
     project_name: "django_example"
     home_dir: "/home/ubuntu"
     project_repo: "git@github.com:aodin/django-example.git"
@@ -12,7 +13,6 @@
     requirements_file: "{{ install_path }}/requirements.txt"
     django_path: "{{ install_path }}/{{ project_name }}"
     static_root: "{{ django_path }}/static"
-    domain: ""
     db_user: postgres
     db_name: django_example
     db_password: postgres
