@@ -9,7 +9,7 @@
       - postgresql
       - postgresql-contrib
       - libpq-dev
-      - python3-psycopg2
+      - python3-psycopg2 # Required for Ansible
 
 - name: database is created
   become: yes
@@ -31,10 +31,3 @@
     password: "{{ db_password }}"
     priv: ALL
     state: present
-
-- name: postgres is started
-  become: yes
-  service:
-    name: postgresql
-    state: started
-    enabled: yes

@@ -1,19 +1,19 @@
 ---
-- name: the server has a copy of the private deploy key
+- name: server has a copy of the private deploy key
   become: no
   copy:
     src: "~/.ssh/{{ deploy_key }}"
     dest: "{{ home_dir }}/.ssh/id_rsa"
     mode: 0600
 
-- name: the server has a copy of the public deploy key
+- name: server has a copy of the public deploy key
   become: no
   copy:
     src: "~/.ssh/{{ deploy_key }}.pub"
     dest: "{{ home_dir }}/.ssh/id_rsa.pub"
     mode: 0600
 
-- name: the latest packages are installed
+- name: latest ubuntu packages are installed
   become: yes
   apt:
     update_cache: yes
@@ -25,12 +25,8 @@
       - build-essential
       - python3-dev
       - virtualenv
-      - pipenv
-      - python3-pip
-      - python3-psycopg2
-      - python3-gunicorn
 
-- name: the git repository is up to date
+- name: git repository is up to date
   become: no
   git:
     repo: "{{ project_repo }}"
@@ -41,7 +37,7 @@
   tags:
     - update_only
 
-- name: the python requirements are installed in a python3 virtual environment
+- name: python requirements are installed in a python3 virtual environment
   become: no
   pip:
     requirements: "{{ requirements_file }}"
@@ -52,7 +48,7 @@
   tags:
     - update_only
 
-- name: the local settings for Django are created
+- name: local settings for Django exist
   become: no
   template:
     src: "local_settings.py.j2"

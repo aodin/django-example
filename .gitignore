@@ -5,3 +5,10 @@ __pycache__
 .DS_Store
 deploy.sh
 db.sqlite3
+plan.tmp
+
+
+# Ignored terraform files since this is a template
+.terraform/
+terraform.tfstate
+.terraform.lock.hcl
