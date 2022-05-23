@@ -144,7 +144,7 @@ resource "aws_instance" "django_web" {
 
   vpc_security_group_ids      = [aws_security_group.django_security.id]
   associate_public_ip_address = true
-  disable_api_termination     = true
+  disable_api_termination     = false
 
   # To keep your current IPv6 address when replacing the AWS instance, add it below:
   # ipv6_addresses = []

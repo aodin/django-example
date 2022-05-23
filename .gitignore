@@ -11,4 +11,5 @@ plan.tmp
 # Ignored terraform files since this is a template
 .terraform/
 terraform.tfstate
+terraform.tfstate.backup
 .terraform.lock.hcl

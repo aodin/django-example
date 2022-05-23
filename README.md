@@ -24,12 +24,17 @@ The first run requires initializing with:
 
     terraform init
 
-Then - or on subsequent runs:
+Then (or on subsequent runs):
 
     terraform plan --out=plan.tmp
     terraform apply "plan.tmp"
 
 The configuration is for the `us-west-2` region. You can deploy to other region by changing the `aws_region` and `instance_ami` variables. [Here is the list of available Ubuntu AMIs.](https://cloud-images.ubuntu.com/locator/ec2/)
+
+To destroy the provisioned infrastructure:
+
+    terraform plan -destroy --out=plan.tmp
+    terraform apply "plan.tmp"
 
 
 ### Configure Server via Ansible
