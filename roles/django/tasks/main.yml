@@ -37,6 +37,14 @@
   tags:
     - update_only
 
+- name: the nginx user has been set
+  become: yes
+  ansible.builtin.lineinfile:
+    path: /etc/nginx/nginx.conf
+    search_string: "user www-data;"
+    line: "user ubuntu;"
+  notify: restart nginx
+
 - name: python requirements are installed in a python3 virtual environment
   become: no
   pip:

@@ -1,5 +1,5 @@
 ---
-- hosts: tag_Name_django_example
+- hosts: tag_Name_django_web
   remote_user: ubuntu
   gather_facts: no
   vars:

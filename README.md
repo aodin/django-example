@@ -29,7 +29,6 @@ Then - or on subsequent runs:
     terraform plan --out=plan.tmp
     terraform apply "plan.tmp"
 
-
 The configuration is for the `us-west-2` region. You can deploy to other region by changing the `aws_region` and `instance_ami` variables. [Here is the list of available Ubuntu AMIs.](https://cloud-images.ubuntu.com/locator/ec2/)
 
 
@@ -45,6 +44,8 @@ Ansible variables that may need to be updated in `site.yml` or in `ansible-playb
 You can add your AWS access key to your current shell with:
 
     ssh-add path/to/key.pem
+
+You may need to add your current IP address to the AWS security group.
 
 Ansible deployment is performed with:
 
