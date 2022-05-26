@@ -22,10 +22,9 @@ class MonthlyTotalManager(models.Manager):
         return (
             super()
             .get_queryset()
-            .annotate(
-                month=models.functions.TruncMonth("at"),
-                total=models.Sum("amount"),
-            )
+            .annotate(month=models.functions.TruncMonth("at"))
+            .values("month")
+            .annotate(total=models.Sum("amount"))
         )
 
 

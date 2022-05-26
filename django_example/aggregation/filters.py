@@ -18,6 +18,13 @@ class PurchaseFilter(django_filters.FilterSet):
 
 
 class MonthlyTotalFilter(django_filters.FilterSet):
+    sort = django_filters.OrderingFilter(
+        fields=(
+            ("month", "month"),
+            ("total", "total"),
+        ),
+    )
+
     class Meta:
         model = MonthlyTotal
-        exclude = ("item",)
+        fields = ("item",)
