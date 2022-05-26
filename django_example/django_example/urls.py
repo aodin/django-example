@@ -11,4 +11,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.Example.as_view(), name='example'),
     path('app/', include('app.urls')),
+    path('aggregation/', include('aggregation.urls')),
 ]

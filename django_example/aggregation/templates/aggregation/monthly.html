@@ -1,0 +1,29 @@
+{% extends 'bootstrap.html' %}
+
+{% block body %}
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1>Aggregation</h1>
+
+      <table class="table table-sm">
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th class="text-end">Amount</th>
+            <th class="text-end">At</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for object in object_list %}
+          <tr>
+            <td>{{ object.item }}</td>
+            <td class="text-end">{{ object.amount }}</td>
+            <td class="text-end">{{ object.at }}</td>
+          </tr>{% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}

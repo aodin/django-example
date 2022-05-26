@@ -30,9 +30,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'django.forms',
+    'django_filters',
+
+    # Local apps
     'custom_user.apps.CustomUserConfig',
     'app.apps.AppConfig',
-    'django.forms',
+    'aggregation.apps.AggregationConfig',
 ]
 
 AUTH_USER_MODEL = 'custom_user.CustomUser'
