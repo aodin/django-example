@@ -12,7 +12,22 @@ class Purchase(models.Model):
         return self.item
 
     class Meta:
+        db_table = "purchases"
         get_latest_by = "at"
+
+
+class AggregatedPurchaseManager(models.Manager):
+    def get_queryset(self):
+        return (
+            super().get_queryset().values("item").annotate(total=models.Sum("amount"))
+        )
+
+
+class AggregatedPurchase(Purchase):
+    objects = AggregatedPurchaseManager()
+
+    class Meta:
+        proxy = True
 
 
 class MonthlyTotalManager(models.Manager):
