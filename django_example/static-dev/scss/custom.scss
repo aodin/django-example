@@ -1,0 +1,17 @@
+@import "node_modules/bootstrap/scss/functions";
+@import "node_modules/bootstrap/scss/variables";
+@import "node_modules/bootstrap/scss/mixins";
+
+/* Override Bootstrap default values in this file */
+
+/* Additional theme colors */
+$custom-colors: (
+	"error": $danger,
+	"failure": $danger,
+	"info": $gray-200,
+);
+
+$theme-colors: map-merge($theme-colors, $custom-colors);
+$table-variants: map-merge($table-variants, $custom-colors);
+
+@import "node_modules/bootstrap/scss/bootstrap";

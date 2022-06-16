@@ -6,7 +6,7 @@ __pycache__
 deploy.sh
 db.sqlite3
 plan.tmp
-
+node_modules/
 
 # Ignored terraform files since this is a template
 .terraform/

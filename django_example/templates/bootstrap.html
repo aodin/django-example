@@ -1,0 +1,25 @@
+{% load static %}<!doctype html>
+<html lang="en" class="h-100">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Django Example{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    {% block header %}{% endblock %}
+  </head>
+  {# Sticky footer from https://getbootstrap.com/docs/5.1/examples/sticky-footer/ #}
+  <body class="d-flex flex-column h-100">
+    {% block body %}
+    <main class="flex-shrink-0">
+      {% block main %}{% endblock %}
+    </main>
+    <footer class="footer mt-auto py-3 bg-light">
+      <div class="container">
+        <span class="text-muted small">&copy; {% now "Y" %}</span>
+      </div>
+    </footer>
+    {% endblock %}
+    <script src="{% static 'js/lib/bootstrap.bundle.min.js' %}"></script>
+    {% block js %}{% endblock %}
+  </body>
+</html>

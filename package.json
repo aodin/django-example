@@ -1,0 +1,23 @@
+{
+  "name": "django-example",
+  "version": "0.1.0",
+  "description": "Example Django project",
+  "private": true,
+  "scripts": {
+    "bootstrap": "sass --load-path=. --style=compressed django_example/static-dev/scss/custom.scss django_example/static-dev/css/bootstrap.min.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aodin/django-example.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/aodin/django-example/issues"
+  },
+  "homepage": "https://github.com/aodin/django-example#readme",
+  "devDependencies": {
+    "bootstrap": "^5.1.3",
+    "sass": "^1.52.3"
+  }
+}
