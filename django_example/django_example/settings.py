@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "custom_user.apps.CustomUserConfig",
     "example_app.apps.ExampleAppConfig",
+    "crispy_forms",
+    "crispy_bootstrap5",
     "django.forms",  # Required because we have specified FORM_RENDERER
 ]
 
