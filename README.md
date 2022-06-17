@@ -1,11 +1,11 @@
 Django Example
 ====
 
-An example [Django](https://www.djangoproject.com) website.
+An example [Django](https://www.djangoproject.com) project. Includes:
 
-- [X] MIT licensed
+- [X] MIT license
 - [X] Dependency management with [Poetry](https://python-poetry.org/docs/master/)
-- [X] Using a [custom User model](https://docs.djangoproject.com/en/dev/topics/auth/customizing/#substituting-a-custom-user-model))
+- [X] A [custom User model](https://docs.djangoproject.com/en/dev/topics/auth/customizing/#substituting-a-custom-user-model)
 - [X] Extensible local settings
 - [X] Example app using a namespaced URL
 - [X] Example model, view, and admin classes
@@ -13,18 +13,18 @@ An example [Django](https://www.djangoproject.com) website.
 - [ ] Example template tags
 - [X] Form-rendering with [Crispy Forms](https://django-crispy-forms.readthedocs.io/en/latest/)
 - [X] Usage of [ManifestStaticFilesStorage](https://docs.djangoproject.com/en/dev/ref/contrib/staticfiles/#manifeststaticfilesstorage)
-- [ ] Example JS bundling with [esbuild](https://esbuild.github.io)
-- [ ] Example [SCSS](https://sass-lang.com) to CSS transpilation
+- [X] Example JS bundling with [esbuild](https://esbuild.github.io)
+- [X] Example [SCSS](https://sass-lang.com) to CSS transpilation
 - [X] Code formatting with [Black](https://github.com/psf/black)
 - [ ] Dockerfile
 - [X] Terraform configuration for AWS with IPv6 support
-- [X] Deployment via Ansible
+- [X] Roles for deployment via Ansible
 - [X] Support for ARM architecture
 - [ ] Emails with [AWS SES](https://aws.amazon.com/ses/)
 - [ ] HTTPS support via Let's Encrypt
 
 
-This projects is tested on Python 3.10, but may support older Python versions.
+This project is tested on Python 3.10, but may support older Python versions.
 
 
 ### Python Dependency Management with Poetry
@@ -47,6 +47,13 @@ To create a `requirements.txt` file for the production dependencies:
 A custom version of Bootstrap 5.1 can be produced by modifying `custom.scss` in the static folder and then running:
 
     npm run bootstrap
+
+
+### Backwards Compatible Javascript via esbuild
+
+An `example.js` files is included in the static directory. It can be built with:
+
+    npm run esbuild
 
 
 ### Provision AWS Infrastructure via Terraform

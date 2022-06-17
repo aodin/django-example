@@ -4,7 +4,9 @@
   "description": "Example Django project",
   "private": true,
   "scripts": {
-    "bootstrap": "sass --load-path=. --style=compressed django_example/static-dev/scss/custom.scss django_example/static-dev/css/bootstrap.min.css"
+    "bootstrap": "sass --load-path=. --style=compressed django_example/static-dev/scss/custom.scss django_example/static-dev/css/bootstrap.min.css",
+    "lib": "cp node_modules/bootstrap/dist/js/bootstrap.bundle.min.* django_example/static-dev/js/lib/",
+    "esbuild": "esbuild django_example/static-dev/js/example.js --bundle --minify --sourcemap --outfile=django_example/static-dev/js/example.min.js --target=es2018 --global-name=example"
   },
   "repository": {
     "type": "git",
@@ -18,6 +20,8 @@
   "homepage": "https://github.com/aodin/django-example#readme",
   "devDependencies": {
     "bootstrap": "^5.1.3",
+    "esbuild": "^0.14.44",
+    "eslint": "^8.17.0",
     "sass": "^1.52.3"
   }
 }
