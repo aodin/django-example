@@ -5,6 +5,7 @@
   <div class="row mt-4">
     <div class="col-12">
       <h1>Items</h1>
+      <a href="{% url 'items:create' %}">Create an item &gt;</a>
       <ul class="mt-3">
         {% for item in object_list %}
         <li>{{ item }}</li>{% endfor %}

@@ -6,11 +6,11 @@
   <div class="row mt-4">
     <div class="col-12">
       <h1>Create Item</h1>
-      <form method="post" class="mt-3">
-        {% csrf_token %}
-        {{ form|crispy }}
-        <input type="submit" class="btn btn-primary">
-      </form>
+      <div class="card mt-3">
+        <div class="card-body">
+          {% crispy form %}
+        </div>
+      </div>
     </div>
   </div>
 </div>
