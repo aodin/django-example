@@ -24,7 +24,7 @@ An example [Django](https://www.djangoproject.com) project. Includes:
 - [ ] HTTPS support via Let's Encrypt
 
 
-This project is tested on Python 3.10, but may support older Python versions.
+This project is tested on Python 3.12, but may support older Python versions.
 
 
 ### Python Dependency Management with Poetry
