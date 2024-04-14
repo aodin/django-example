@@ -1,0 +1,16 @@
+{% extends 'bootstrap.html' %}
+
+{% block main %}
+<div class="container">
+  <div class="row mt-4">
+    <div class="col-12">
+      <h1>Items</h1>
+      <a href="{% url 'csv:upload' %}">Upload items in a CSV &gt;</a>
+      <ul class="mt-3">
+        {% for item in object_list %}
+        <li>{{ item }}</li>{% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>
+{% endblock %}

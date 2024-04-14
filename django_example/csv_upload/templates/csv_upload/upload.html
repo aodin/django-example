@@ -1,0 +1,17 @@
+{% extends 'bootstrap.html' %}
+{% load crispy_forms_tags %}
+
+{% block main %}
+<div class="container">
+  <div class="row mt-4">
+    <div class="col-12">
+      <h1>Upload CSV</h1>
+      <div class="card mt-3">
+        <div class="card-body">
+          {% crispy form %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
